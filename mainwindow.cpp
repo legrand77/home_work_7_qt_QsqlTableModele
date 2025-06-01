@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     */
 
     dataDb = new DbData(this);
+    dialog = new Dialog(this);
     dataBase = new DataBase(this);
     msg = new QMessageBox(this);
 
@@ -33,6 +34,14 @@ MainWindow::MainWindow(QWidget *parent)
      */
     connect(dataDb, &DbData::sig_sendData, this, [&](QVector<QString> receivData){
         dataForConnect = receivData;
+        dataDb->close();
+        dialog->close();
+    });
+
+    connect(dialog, &Dialog::sig_sendData, this, [&](QVector<QString> receivData){
+        dataForConnect = receivData;
+        dataDb->close();
+        dialog->close();
     });
 
     /*
@@ -58,7 +67,10 @@ MainWindow::~MainWindow()
 void MainWindow::on_act_addData_triggered()
 {
     //Отобразим диалоговое окно. Какой метод нужно использовать?
+    dataDb->setGeometry(500,500,400,200);
     dataDb->show();
+    dialog->setGeometry(1000,500,400,200);
+    dialog->show();
 }
 
 /*!
@@ -114,7 +126,7 @@ void MainWindow::on_pb_request_clicked()
     }
     else
     {
-        request = "*";
+        request = "QsglTableModel";
     }
 
     auto req = [&]{dataBase->RequestToDB(request);};

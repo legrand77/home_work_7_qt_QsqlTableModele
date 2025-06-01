@@ -1,32 +1,30 @@
-#ifndef DBDATA_H
-#define DBDATA_H
+#ifndef DIALOG_H
+#define DIALOG_H
 
 #include <QDialog>
 
 namespace Ui {
-class DbData;
+class Dialog;
 }
 
-class DbData : public QDialog
+class Dialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DbData(QWidget *parent = nullptr);
-    ~DbData();
-
+    explicit Dialog(QWidget *parent = nullptr);
+    ~Dialog();
 
 signals:
     void sig_sendData(QVector<QString> dbData);
-
 
 private slots:
     void on_buttonBox_accepted();
 
 private:
-    Ui::DbData *ui;
+    Ui::Dialog *ui;
     QVector<QString> data;
 
 };
 
-#endif // DBDATA_H
+#endif // DIALOG_H

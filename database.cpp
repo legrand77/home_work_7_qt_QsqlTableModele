@@ -65,8 +65,7 @@ void DataBase::DisconnectFromDataBase(QString nameDb)
  */
 void DataBase::RequestToDB(QString request)
 {
-    ///Тут должен быть код ДЗ
-    if(request == "*")
+    if(request == "QsglTableModel")
     {
         modelTable->setTable("film");
         modelTable->setEditStrategy(QSqlTableModel::OnManualSubmit);

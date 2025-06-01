@@ -22,6 +22,9 @@ set(PROJECT_SOURCES
     dbdata.h
     dbdata.cpp
     dbdata.ui
+    dialog.h
+    dialog.cpp
+    dialog.ui 
 )
 
 add_executable(08_PreDataBase

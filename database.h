@@ -23,17 +23,6 @@ enum fieldsForConnect{
     port = 4
 };
 
-//Типы запросов
-enum requestType{
-
-    requestAllFilms = 1,
-    requestComedy   = 2,
-    requestHorrors  = 3
-
-};
-
-
-
 class DataBase : public QObject
 {
     Q_OBJECT
