@@ -43,7 +43,7 @@ private:
     QVector<QString> dataForConnect; //Данные для подключения к БД.
 
     Ui::MainWindow *ui;
-    DbData *dataDb;
+    //DbData *dataDb;
     Dialog *dialog;
     DataBase* dataBase;
     QMessageBox* msg;

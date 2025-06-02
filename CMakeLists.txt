@@ -19,9 +19,6 @@ set(PROJECT_SOURCES
     mainwindow.ui
     database.h
     database.cpp
-    dbdata.h
-    dbdata.cpp
-    dbdata.ui
     dialog.h
     dialog.cpp
     dialog.ui 

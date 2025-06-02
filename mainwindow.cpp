@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
      * QObject, поэтому воспользуемся иерархией.
     */
 
-    dataDb = new DbData(this);
+    //dataDb = new DbData(this);
     dialog = new Dialog(this);
     dataBase = new DataBase(this);
     msg = new QMessageBox(this);
@@ -32,16 +32,16 @@ MainWindow::MainWindow(QWidget *parent)
      * Устанавливаем данные для подключениея к БД.
      * Поскольку метод небольшой используем лямбда-функцию.
      */
-    connect(dataDb, &DbData::sig_sendData, this, [&](QVector<QString> receivData){
-        dataForConnect = receivData;
-        dataDb->close();
-        dialog->close();
-    });
+    //connect(dataDb, &DbData::sig_sendData, this, [&](QVector<QString> receivData){
+        //dataForConnect = receivData;
+        //dataDb->close();
+        //dialog->close();
+    //});
 
     connect(dialog, &Dialog::sig_sendData, this, [&](QVector<QString> receivData){
         dataForConnect = receivData;
-        dataDb->close();
-        dialog->close();
+        //dataDb->close();
+        //dialog->close();
     });
 
     /*
@@ -67,9 +67,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_act_addData_triggered()
 {
     //Отобразим диалоговое окно. Какой метод нужно использовать?
-    dataDb->setGeometry(500,500,400,200);
-    dataDb->show();
-    dialog->setGeometry(1000,500,400,200);
+    //dataDb->setGeometry(500,500,400,200);
+    //dataDb->show();
+    //dialog->setGeometry(1000,500,400,200);
     dialog->show();
 }
 
@@ -149,7 +149,11 @@ void MainWindow::ScreenQueryFromDB(QSqlQueryModel *model)
 void MainWindow::ScreenTableFromDB(QSqlTableModel *model)
 {
     ui->tb_result->setModel(model);
-    ///Тут должен быть код ДЗ
+    ui->tb_result->hideColumn(0);
+    for (int i=3;i<14;i++){
+    ui->tb_result->hideColumn(i);
+    }
+    ///Тут должен быть код ДЗ QTableView::hideColumn
 }
 /*!
  * \brief Метод изменяет стотояние формы в зависимости от статуса подключения к БД
@@ -173,9 +177,6 @@ void MainWindow::ReceiveStatusConnectionToDB(bool status)
     }
 
 }
-
-
-
 
 void MainWindow::on_pb_clear_clicked()
 {
