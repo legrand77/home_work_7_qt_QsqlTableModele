@@ -5,7 +5,6 @@
 #include <QMessageBox>
 #include <QtConcurrent>
 #include "database.h"
-#include "dbdata.h"
 #include "dialog.h"
 
 QT_BEGIN_NAMESPACE

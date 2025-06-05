@@ -142,6 +142,7 @@ void MainWindow::on_pb_request_clicked()
  */
 void MainWindow::ScreenQueryFromDB(QSqlQueryModel *model)
 {
+    ui->tb_result->showColumn(0);
     ui->tb_result->setModel(model);
     ///Тут должен быть код ДЗ
 }
